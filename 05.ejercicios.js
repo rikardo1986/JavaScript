@@ -55,6 +55,8 @@ console.log(carrito.get("Pan")); // 1500
 carrito.delete("Leche");
 console.log(carrito.size); // 1
 
+//******************** EJERCICIOS ********************
+
 // 1. Crea un array que almacene cinco animales
 
 let animales = ["Perro", "Gato", "Condor", "Tiburon", "Serpiente"];
