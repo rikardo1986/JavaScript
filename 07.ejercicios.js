@@ -1,5 +1,4 @@
 // ******************** FUNCIONES ********************
-
 /* 
 Bloque de código reutilizable y diseñado para realizar una tarea específica o calcular un valor. 
 Permite agrupar instrucciones, aceptar datos de entrada (parámetros) y devolver un resultado (retorno), 
