@@ -1,7 +1,7 @@
 // ******************** Desestructuración y Propagación ********************
 /*
 Desestructuración: Es una forma de extraer valores de arrays u objetos y asignarlos a variables de manera más concisa. 
-Propagación: Es una forma de copiar o combinar arrays u objetos utilizando el operador de propagación. (...)
+Propagación: Es una forma de copiar, combinar o expandir arrays u objetos utilizando el operador de propagación. (...)
 Ambas herramientas agilizan drásticamente la manipulación de datos
 */
 
@@ -43,13 +43,13 @@ console.log(miValue9); // Acceder al quinto elemento del array
 
 // Ignorar elementos array
 
-let [miValue10, , , miValue13] = miArray; // Desestructuración del array ignorando elementos
+let [miValue10, , , miValue13] = miArray; // Desestructuración del array ignorando elementos, se hace por comas
 console.log(miValue10); // Acceder al primer elemento del array
 console.log(miValue13); // Acceder al cuarto elemento del array
 
 // Sintaxis objects
 
-let { nombre, edad, alias } = persona; // Desestructuración del objeto
+let { nombre, edad, alias } = persona; // Desestructuración del objeto, para iterarlos se hace con llaves {}
 console.log(nombre); // Acceder a la propiedad "nombre" del objeto
 console.log(edad); // Acceder a la propiedad "edad" del objeto
 console.log(alias); // Acceder a la propiedad "alias" del objeto
@@ -74,7 +74,7 @@ console.log(nombre3); // Acceder a la propiedad "nombre" del objeto
 console.log(edad3); // Acceder a la propiedad "edad" del objeto
 console.log(alias3); // Acceder a la propiedad "alias" del objeto
 
-// Objects anidados
+// Objetos anidados
 
 let person3 = {
   // Objeto anidado
@@ -99,12 +99,12 @@ let person3 = {
 let {
   nombre: nombre4,
   job: { name: jobName },
-} = person3; // Desestructuración del objeto anidado
+} = person3; // Desestructuración del objeto anidado job, para acceder a la propiedad "name" del objeto anidado "job"
 
 console.log(nombre4); // Acceder a la propiedad "nombre" del objeto
 console.log(jobName); // Acceder a la propiedad "name" del objeto anidado "job"
 
-// Propagación (...)
+// Propagación (...) son esos 3 puntos
 
 // Sintaxis arrays
 
