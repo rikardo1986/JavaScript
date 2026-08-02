@@ -31,7 +31,6 @@ let persona2 = new DefaultPersona("Constanza", 14); // Crear una instancia de la
 console.log(persona2); // Mostrar la instancia de la clase DefaultPersona
 
 // acceso a propiedades
-
 console.log(persona2.alias); // Acceder a la propiedad alias de la instancia de la clase DefaultPersona
 console.log(persona2["alias"]); // Acceder a la propiedad alias de la instancia de la clase DefaultPersona
 
@@ -39,7 +38,6 @@ persona2.alias = "Cony"; // Modificar la propiedad alias de la instancia de la c
 console.log(persona2.alias); // Acceder a la propiedad alias de la instancia de la clase DefaultPersona
 
 // Funciones en clases
-
 class PersonaConFunciones {
   // Definición de la clase PersonaConFunciones
   constructor(nombre, edad, alias) {
@@ -58,7 +56,6 @@ let persona3 = new PersonaConFunciones("Ricardo", 40, "Rikardo"); // Crear una i
 persona3.caminar(); // Llamar al método caminar de la instancia de la clase PersonaConFunciones
 
 // Propiedades privadas y públicas
-
 class PersonaPrivada {
   // Definición de la clase PersonaPrivada
   #banco; // Propiedad privada banco, se declara con el símbolo # antes del nombre de la propiedad
@@ -80,8 +77,11 @@ console.log(persona4);
 // persona4.banco = "Banco de Santiago"; // Intentar modificar la propiedad privada banco de la instancia de la clase PersonaPrivada, esto genera un error
 // persona4.pagar(); // Llamar al método pagar de la instancia de la clase PersonaPrivada
 
-// Getters y Setters: son funciones especiales dentro de una clase que te permiten acceder y modificar las propiedades de un objeto
-// como si fueran variables comunes, pero con la ventaja de poder ejecutar código intermedio (como validaciones) antes de hacerlo
+/* Getters y Setters: son funciones especiales dentro de una clase que te permiten acceder y modificar las propiedades de un objeto
+como si fueran variables comunes, pero con la ventaja de poder ejecutar código intermedio (como validaciones) antes de hacerlo
+Getters: son funciones que se utilizan para obtener el valor de una propiedad privada de un objeto.
+Setters: son funciones que se utilizan para modificar el valor de una propiedad privada de un objeto.
+*/
 
 class PersonaGetSet {
   // Definición de la clase PersonaGetSet
@@ -114,8 +114,9 @@ persona5.tarjeta = "6y5t4r3e2w1q"; // Modificar la propiedad privada tarjeta de 
 console.log(persona5.tarjeta); //   Acceder a la propiedad privada tarjeta de la instancia de la clase PersonaGetSet a través del getter,
 // pero no se puede modificar la propiedad privada tarjeta de la instancia de la clase PersonaGetSet a través del getter, esto genera un error
 
-// Herencia: es un mecanismo que permite crear una nueva clase a partir de una clase existente, heredando sus propiedades y métodos,
-// y permitiendo agregar nuevas propiedades y métodos o modificar los existentes.
+/* Herencia: es un mecanismo que permite crear una nueva clase a partir de una clase existente, heredando sus propiedades y métodos,
+y permitiendo agregar nuevas propiedades y métodos o modificar los existentes.
+*/
 
 class Animal {
   // Definición de la clase Animal
@@ -174,20 +175,104 @@ console.log(Matematica.sumar(5, 35)); // Llamar al método estático sumar de la
 
 // 1. Crea una clase que reciba 2 propiedades.
 
-// 2. Añade un metodo a la clase que utilice las propiedades.
+class Vehiculo {
+  constructor(marca, modelo) {
+    this.marca = marca;
+    this.modelo = modelo;
+  }
 
-// 3. Muestra los valores de las propiedades e invoca a la función.
+  // 2. Añade un metodo a la clase que utilice las propiedades.
 
-// 4. Añade un metodo estático a la primera clase.
+  velocidad() {
+    // 3. Muestra los valores de las propiedades e invoca a la función.
 
+    console.log(
+      `El ${this.marca} ${this.modelo} tiene una velocidad de mas de 100 km/h`,
+    );
+  }
+
+  // 4. Añade un metodo estático a la primera clase.
+
+  static obtenerInformacion(Vehiculo) {
+    return `Información del vehículo: ${Vehiculo.marca} ${Vehiculo.modelo}`;
+  }
+}
 // 5. Haz uso del metodo estatico.
+
+let miVehiculo = new Vehiculo("Toyota", "Corolla");
+console.log(Vehiculo.obtenerInformacion(miVehiculo));
+miVehiculo.velocidad();
 
 // 6. Crea una clase que haga uso de herencia.
 
+class Clima {
+  constructor(temperatura) {
+    this.temperatura = temperatura;
+  }
+  mostrarTemperatura() {
+    console.log(`La temperatura es: ${this.temperatura}°C`);
+  }
+}
+class Nublado extends Clima {
+  constructor(temperatura, nubes) {
+    super(temperatura);
+    this.nubes = nubes;
+  }
+  mostrarInformacion() {
+    this.mostrarTemperatura();
+    console.log(`El cielo está nublado con ${this.nubes} nubes`);
+  }
+}
+
+let MiNublado = new Nublado(18, 5);
+MiNublado.mostrarInformacion();
+
 // 7. Crea una clase que haga uso de getters y setters.
+
+class GrupoGetSet {
+  #nombre;
+  #album;
+  #lanzamiento;
+  #ventas;
+  constructor(nombre, album, lanzamiento, ventas) {
+    this.#nombre = nombre;
+    this.#album = album;
+    this.#lanzamiento = lanzamiento;
+    this.#ventas = ventas;
+  }
+  get nombre() {
+    return this.#nombre;
+  }
+  set ventas(newVentas) {
+    this.#ventas = newVentas;
+  }
+}
 
 // 8. Modifica la clase getters y setters para que use propiedades privadas.
 
+let grupo1 = new GrupoGetSet("Pibes Chorros", "Arriba las manos", 2001, 100000);
+let grupo2 = new GrupoGetSet("Pala Ancha", "Cumbia Callejera", 2001, 8000);
+grupo1.ventas = 150000;
+
 // 9. Utiliza los get y set y muestra sus valores.
 
+console.log(grupo1.nombre);
+console.log(grupo2.nombre);
+console.log(grupo1.ventas);
+
 // 10. Sobrescribe un metodo de una clase que utilice herencia.
+
+class Viento extends Clima {
+  constructor(temperatura, velocidad) {
+    // Recibe tanto la temperatura para el padre como la velocidad propia
+    super(temperatura); // Pasa la temperatura a la clase Clima
+    this.velocidad = velocidad;
+  }
+  mostrarTemperatura() {
+    // define el método del padre con el mismo nombre
+    super.mostrarTemperatura(); // Podemos usar super para llamar al comportamiento original si queremos
+    console.log(`El viento se mueve a ${this.velocidad} km/h`); // añadimos el comportamiento extra del viento
+  }
+}
+let MiViento = new Viento(20, 60); // Pasamos temperatura (15) y velocidad (60)
+MiViento.mostrarTemperatura(); // Al ejecutar este método, se llamará a la versión modificada de la clase Viento
